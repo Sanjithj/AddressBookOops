@@ -35,6 +35,8 @@ public class AddressBook extends Contact {
 		System.out.println("Enter the phone number: ");
 		long phone = scanner.nextLong();
 		
+		System.out.println("Refactor the contacts: ");
+		
 		
 		Contact contact = new Contact(firstName, lastName, address, city, state, email, zipcode, phone);
 			
