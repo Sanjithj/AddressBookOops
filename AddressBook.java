@@ -1,79 +1,77 @@
 package com.bridgelabz;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AddressBook extends Contacts {
+public class AddressBook extends Contact {
 
-	private static String last_name;
-	private static String first_name;
-	private static String Address;
-	private static String city;
-	private static String email;
-	private static String phone_number;
-	private static String state;
-	private static AddressBook contacts;
+	public static ArrayList<Contact>addressBook = new ArrayList<Contact>();
 	
-	
-	public static void main(String[] args) {
-	 System.out.println("Welcome to Address Book in Oops Concepts");
-	
-				   Scanner scanner=new Scanner(System.in);
-				   System.out.println("Enter the first name: " + "");
-				   firstName = scanner.next();
-					
-					System.out.println("Enter the last name: " + "");
-					lastName = scanner.next();
-					
-					System.out.println("Enter the address: ");
-					address = scanner.next();
-				
-					System.out.println("Enter the city: ");
-					city = scanner.next();	
-					
-					System.out.println("Enter the state: ");
-					state = scanner.next();
-					
-					System.out.println("Enter the email: ");
-					String emails = scanner.next();
-					
-					System.out.println("Enter the zipcode: ");
-					zipcode = scanner.nextInt();
-					
-					System.out.println("Enter the phone number: ");
-					phone = scanner.nextLong();
-					
-					contacts = new AddressBook(); 
-					System.out.println("Name: "+AddressBook.first_name+" "+AddressBook.last_name+"\n Address: "+AddressBook.Address+".\n city :"+AddressBook.city+"\n state"+AddressBook.state+"\n phone number:"+AddressBook.phone_number+"\n email"+AddressBook.email);
-					
-				
-			}
-	public static void display() {
+	public Contact inputDetails() {
 		
-	}
-
-
-	public static void edit_contact() {
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("enter the first name: ");
+		System.out.println("Enter the first name: " + "");
 		String firstName = scanner.next();
 		
-		int index = findContact(firstName);
+		System.out.println("Enter the last name: " + "");
+		String lastName = scanner.next();
 		
-	}
+		System.out.println("Enter the address: ");
+		String address = scanner.next();
 	
-
-	private static int findContact(String firstName) {
+		System.out.println("Enter the city: ");
+		String city = scanner.next();
+		
+		System.out.println("Enter the state: ");
+		String state = scanner.next();
+		
+		System.out.println("Enter the email: ");
+		String email = scanner.next();
+		
+		System.out.println("Enter the zipcode: ");
+		int zipcode = scanner.nextInt();
+		
+		System.out.println("Enter the phone number: ");
+		long phone = scanner.nextLong();
+		
+		
+		Contact contact = new Contact(firstName, lastName, address, city, state, email, zipcode, phone);
+			
+		return contact;
+		}
+		public void displayContact() {
+		 
+			for (Contact contact : addressBook)
+		 		{
+					System.out.println(contact);
+		 		}
+	    }
+	 
+	 	public void addContact() {
+	 		
+	 			addressBook.add(inputDetails());
+     	}
+     public int findContact(String firstName) {
+    	 for (Contact contact : addressBook) {
+    		 if(firstName.compareToIgnoreCase(contact.getFirstName())==0) {
+    			 return addressBook.indexOf(contact);
+    		 }
+    	 }
 		return 0;
-	}
-
-
-	private static Object inputDetails() {
-		return null;
-	}
-
-
-	public static void add_contact() {
-	}	
-	}
-
+     }
+		public void editContact() {
+			Scanner scanner = new Scanner(System.in);
+			
+			System.out.println("enter the first name: ");
+			String firstName = scanner.next();
+			
+			int index = findContact(firstName);
+			
+			if(index == -1) {
+				System.out.println(" null no contact");
+				return;
+			}
+			addressBook.set(index,inputDetails());
+		}
+}
