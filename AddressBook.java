@@ -42,13 +42,38 @@ public class AddressBook extends Contacts {
 					System.out.println("Enter the phone number: ");
 					phone = scanner.nextLong();
 					
-					
-					
 					contacts = new AddressBook(); 
 					System.out.println("Name: "+AddressBook.first_name+" "+AddressBook.last_name+"\n Address: "+AddressBook.Address+".\n city :"+AddressBook.city+"\n state"+AddressBook.state+"\n phone number:"+AddressBook.phone_number+"\n email"+AddressBook.email);
 					
 				
 			}
-			
+	public static void display() {
+		
+	}
+
+
+	public static void edit_contact() {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("enter the first name: ");
+		String firstName = scanner.next();
+		
+		int index = findContact(firstName);
+		
+	}
+	
+
+	private static int findContact(String firstName) {
+		return 0;
+	}
+
+
+	private static Object inputDetails() {
+		return null;
+	}
+
+
+	public static void add_contact() {
+	}	
 	}
 
