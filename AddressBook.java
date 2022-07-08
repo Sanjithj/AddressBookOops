@@ -74,4 +74,23 @@ public class AddressBook extends Contact {
 			}
 			addressBook.set(index,inputDetails());
 		}
+		public void deleteContact() {
+			System.out.println("Enter the first name to be deleted :");
+		    String first_name = sc.next();
+		    if(first_name.equals(first_name))
+		    {
+		        System.out.println("The details are found!!");
+		        first_name="";
+		        last_name="";
+		        Address="";
+		        phone_number=(Long) null;
+		        state="";
+		        city="";
+		        email="";
+
+		        System.out.println("finally your contact deleted");
+		    }
+		}
+
+		}
 }
